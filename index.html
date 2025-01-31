@@ -7,32 +7,66 @@
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #ffe6e6;
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to bottom, #ffcccc, #ffb3b3);
+            margin: 0;
+            padding: 0;
         }
         .container {
             margin-top: 50px;
+            animation: fadeIn 2s ease-in-out;
         }
         h1 {
             color: #ff4d4d;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #662626;
+            margin-bottom: 30px;
         }
         .btn {
             background-color: #ff4d4d;
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 18px;
+            font-size: 1.2rem;
             cursor: pointer;
             border-radius: 10px;
             margin: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #e63939;
         }
         .hidden {
             display: none;
             margin-top: 20px;
+            font-size: 1.5rem;
+            color: #662626;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://source.unsplash.com/1600x900/?love,couple') no-repeat center center/cover;
+            opacity: 0.3;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background"></div>
     <div class="container">
         <h1>Hola mi amor ❤️</h1>
         <p>Eres la persona más especial en mi vida y quería preguntarte algo...</p>
