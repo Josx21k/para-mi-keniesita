@@ -1,83 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres ser mi San Valentín?</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Dancing Script', cursive;
-            background: linear-gradient(to bottom, #ffcccc, #ffb3b3);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            margin-top: 50px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        h1 {
-            color: #ff4d4d;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.5rem;
-            color: #662626;
-            margin-bottom: 30px;
-        }
-        .btn {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 10px;
-            margin: 10px;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-        .btn:hover {
-            transform: scale(1.1);
-            background-color: #e63939;
-        }
-        .hidden {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.5rem;
-            color: #662626;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: url('https://source.unsplash.com/1600x900/?love,couple') no-repeat center center/cover;
-            opacity: 0.3;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pompompurin y Hello Kitty</title>
+  <style>
+    /* Estilo general del cuerpo */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #fff;
+      background-image: url('https://i.pinimg.com/originals/6b/7b/6e/6b7b6e3b8c6a6c5b5b5b5b5b5b5b5b5b.jpg'); /* Fondo de Pompompurin con flores */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    /* Contenedor principal */
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+      padding: 20px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 10%;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    /* Título principal */
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff69b4; /* Color rosa */
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Botones */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    button {
+      background-color: #ff69b4; /* Rosa */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493; /* Rosa más oscuro */
+      transform: scale(1.1);
+    }
+
+    /* Botón "No" que se mueve */
+    #no {
+      position: absolute;
+    }
+
+    /* Mensaje dinámico */
+    .message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ff69b4;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="container">
-        <h1>Hola mi amor ❤️</h1>
-        <p>Eres la persona más especial en mi vida y quería preguntarte algo...</p>
-        <button class="btn" onclick="mostrarMensaje()">¿Quieres ser mi San Valentín?</button>
-        <p id="mensaje" class="hidden">¡Sabía que dirías que sí! ❤️🥰</p>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+    <div class="buttons">
+      <button id="si" onclick="responder('si')">Sí 💖</button>
+      <button id="no" onmouseover="moverBoton()">No 💔</button>
     </div>
+    <div class="message" id="message"></div>
+  </div>
 
-    <script>
-        function mostrarMensaje() {
-            document.getElementById("mensaje").style.display = "block";
-        }
-    </script>
+  <script>
+    // Función para manejar la respuesta
+    function responder(respuesta) {
+      const messageDiv = document.getElementById('message'); // Div para mostrar mensajes
+
+      if (respuesta === 'si') {
+        // Si responde "Sí"
+        messageDiv.innerHTML = "¡Sabía que dirías que sí! ❤️";
+        messageDiv.style.color = "#00ff00"; // Cambia el color del mensaje a verde
+      }
+    }
+
+    // Función para mover el botón "No"
+    function moverBoton() {
+      const botonNo = document.getElementById('no');
+      const container = document.querySelector('.container');
+
+      // Generar nuevas posiciones aleatorias dentro del contenedor
+      const maxX = container.offsetWidth - botonNo.offsetWidth;
+      const maxY = container.offsetHeight - botonNo.offsetHeight;
+
+      const nuevaX = Math.random() * maxX;
+      const nuevaY = Math.random() * maxY;
+
+      // Aplicar las nuevas posiciones
+      botonNo.style.left = nuevaX + 'px';
+      botonNo.style.top = nuevaY + 'px';
+    }
+  </script>
 </body>
 </html>
